@@ -24,7 +24,7 @@ fi
 
 if [ -f "/sdcard/RemBackup/build.prop.backup" ] || [ -f "/system/build.prop.backup" ] || [ -f "~/build.prop.backup" ];
 then
-    #Backup Exist
+    echo
 else
 sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup ~/build.prop.backup < /system/build.prop &> /dev/null
 fi
