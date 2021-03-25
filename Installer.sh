@@ -52,6 +52,6 @@ then
   sudo chmod o+rwx /system/build.prop
   sudo cat /system/build.prop.backup > /system/build.prop
   sudo chmod o-rwx /system/build.prop
-  echo -e "\e[1;92m Restored Successfully\e[0m"
+  echo -e "\e[1;92m Restored Successfully\e[0m\n\n"
 fi
 
