@@ -1,3 +1,16 @@
+echo -e "\e[1;93mRem Touch Responsiveness Setup Script\e[1;95m1. Apply Settings\n2. Restore Default Settings\e[0m"
+read choice
+if [ $choice -eq 1 ];
+then
+  apply
+elif [ $choice -eq 2 ];
+then
+  sudo chmod o+rwx /system/build.prop
+  sudo cat /system/build.prop.backup /system/build.prop
+  sudo chmod o-rwx /system/build.prop
+fi
+
+apply(){
 #Getting Storage Permission
 termux-setup-storage 2>/dev/null
 
@@ -23,7 +36,12 @@ else
 mkdir /sdcard/RemBackup
 fi 
 
-sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup ~/ < /system/build.prop &> /dev/null
+if [ -f "/sdcard/RemBackup/build.prop.backup" ] || [ -f "/system/build.prop.backup" ] || [ -f "~/build.prop.backup" ];
+then
+  echo "OK"
+else
+sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup ~/build.prop.backup < /system/build.prop &> /dev/null
+fi
 
 # Applying Tweaks
 
@@ -34,3 +52,4 @@ sudo cat build.prop >> /system/build.prop
 sudo chmod -R o-rwx /system/build.prop
 
 echo -e "\e[1;92mDone!\e[1;91m Please Reboot your phone\e[0m \n\n"
+}
