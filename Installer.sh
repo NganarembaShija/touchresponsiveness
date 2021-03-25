@@ -2,8 +2,8 @@
 
 #Mounting...
 
-su -c mount -o rw,remount /
-su -c chmod +x Installer.sh > /dev/null
+su -c mount -o rw,remount / &> /dev/null
+su -c chmod +x Installer.sh > /dev/null 2>&1
 
 # Adding build.prop tweaks for Touch responsiveness
 
