@@ -1,5 +1,5 @@
 #Getting Storage Permission
-termux-setup-storage -y
+termux-setup-storage
 
 # Installing sudo in Termux
   # Checking if sudo is already installed
@@ -15,10 +15,13 @@ termux-setup-storage -y
 # Setting Permission
 sudo chmod -R o+rwx /system/build.prop
 
-# Adding build.prop tweaks for Touch responsiveness
-
 # Backing up original build.prop
+if [ -d "/sdcard/RemBackup" ];
+then
+  echo "Backing Up..."
+else
 mkdir /sdcard/RemBackup
+fi 
 
 sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup < /system/build.prop > /dev/null
 
