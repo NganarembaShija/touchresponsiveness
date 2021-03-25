@@ -1,6 +1,4 @@
 apply(){
-#Getting Storage Permission
-termux-setup-storage 2>/dev/null
 
 # Installing sudo in Termux
   # Checking if sudo is already installed
@@ -26,7 +24,7 @@ fi
 
 if [ -f "/sdcard/RemBackup/build.prop.backup" ] || [ -f "/system/build.prop.backup" ] || [ -f "~/build.prop.backup" ];
 then
-  echo "OK"
+    #Backup Exist
 else
 sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup ~/build.prop.backup < /system/build.prop &> /dev/null
 fi
@@ -43,7 +41,7 @@ echo -e "\e[1;92mDone!\e[1;91m Please Reboot your phone\e[0m \n\n"
 }
 
 # Main Menu
-echo -e "\e[1;93mRem Touch Responsiveness Setup Script\n\n\e[1;95m1. Apply Settings\n2. Restore Default Settings\e[0m"
+echo -e "\e[1;93mRem Touch Responsiveness Setup Script\n\n\e[1;92m1. Apply Settings\n2. Restore Default Settings\e[0m\nEnter choice: "
 read choice
 if [ $choice -eq 1 ];
 then
