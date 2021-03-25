@@ -1,15 +1,3 @@
-echo -e "\e[1;93mRem Touch Responsiveness Setup Script\e[1;95m1. Apply Settings\n2. Restore Default Settings\e[0m"
-read choice
-if [ $choice -eq 1 ];
-then
-  apply
-elif [ $choice -eq 2 ];
-then
-  sudo chmod o+rwx /system/build.prop
-  sudo cat /system/build.prop.backup /system/build.prop
-  sudo chmod o-rwx /system/build.prop
-fi
-
 apply(){
 #Getting Storage Permission
 termux-setup-storage 2>/dev/null
@@ -53,3 +41,17 @@ sudo chmod -R o-rwx /system/build.prop
 
 echo -e "\e[1;92mDone!\e[1;91m Please Reboot your phone\e[0m \n\n"
 }
+
+# Main Menu
+echo -e "\e[1;93mRem Touch Responsiveness Setup Script\n\n\e[1;95m1. Apply Settings\n2. Restore Default Settings\e[0m"
+read choice
+if [ $choice -eq 1 ];
+then
+  apply
+elif [ $choice -eq 2 ];
+then
+  sudo chmod o+rwx /system/build.prop
+  sudo cat /system/build.prop.backup /system/build.prop
+  sudo chmod o-rwx /system/build.prop
+fi
+
