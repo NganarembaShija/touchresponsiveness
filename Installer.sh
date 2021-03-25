@@ -20,11 +20,11 @@ sudo chmod -R o+rwx /system/build.prop
 # Backing up original build.prop
 mkdir /sdcard/RemBackup
 
-tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup < /system/build.prop > /dev/null
+sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup < /system/build.prop > /dev/null
 
 # Applying Tweaks
 
-cat build.prop >> /system/build.prop
+sudo cat build.prop >> /system/build.prop
 
 # Setting Permission to default
 
