@@ -1,11 +1,11 @@
 #Getting Storage Permission
-termux-setup-storage
+termux-setup-storage 2>/dev/null
 
 # Installing sudo in Termux
   # Checking if sudo is already installed
   if [ "$(dpkg -s tsu 2>/dev/null | wc -l)" -gt 0 ];
   then
-      echo "Sudo Already Installed"
+      echo "Setting Permission..."
   else
        pkg install tsu -y
   fi
@@ -18,12 +18,12 @@ sudo chmod -R o+rwx /system/build.prop
 # Backing up original build.prop
 if [ -d "/sdcard/RemBackup" ];
 then
-  echo "Backing Up..."
+  echo "Backing up build.prop..."
 else
 mkdir /sdcard/RemBackup
 fi 
 
-sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup < /system/build.prop > /dev/null
+sudo tee /sdcard/RemBackup/build.prop.backup /system/build.prop.backup ~/ < /system/build.prop &> /dev/null
 
 # Applying Tweaks
 
